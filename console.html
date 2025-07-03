@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razer Gaming Gear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="icon" href="assets/razerLogo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #111111;
+            color: #e5e5e5;
+            overflow-x: hidden; 
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        a:hover {
+            color: #44d62c; 
+        }
+        .container {
+            width: 90%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #000000;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #44d62c;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            font-size: 1.3rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #44d62c;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-icons .cart-icon {
+            font-size: 2rem;
+            color: #cccccc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-icons .cart-icon:hover {
+            color: #ffffff;
+        }
+
+        .nav-icons .user-icon {
+            font-size: 2rem;
+            color: #cccccc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-icons .user-icon:hover {
+            color: #ffffff;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #44d62c;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px; 
+            padding-bottom: 80px;
+        }
+
+        .product-card-large {
+            display: flex;
+            background-color: #000;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .product-image-container {
+            flex-basis: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image-large {
+            max-width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            object-fit: contain;
+
+        }
+
+        .product-details-container {
+            flex-basis: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .product-title-group .brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .product-title-group .title {
+            font-size: 1rem;
+            color: #aaa;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #fdd835; 
+        }
+        
+        .product-rating span {
+            color: #ccc;
+        }
+        
+        .price-group {
+           text-align: right;
+        }
+        
+        .price-group .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1rem;
+        }
+        
+        .price-group .save-badge {
+            background-color: #44d62c;
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        
+        .price-group .current-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 5px 0;
+        }
+        
+        .price-group .current-price sup {
+            font-size: 1.2rem;
+            top: -1em;
+        }
+        
+        .price-group .finance-option {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+            flex-grow: 1; 
+        }
+        
+        .spec-item {
+            background-color: #1a1a1a;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .spec-item .spec-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+        
+        .spec-item .spec-value {
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        
+        .footer-links a {
+            color: #44d62c;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 20px;
+        }
+        
+        .footer-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-dark {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .btn-dark:hover {
+            background-color: #444;
+        }
+        
+        .btn-red {
+            background-color: #44d62c; 
+            color: #fff;
+        }
+        
+        .btn-red:hover {
+            background-color: #2aef0c;
+        }
+
+        @media (max-width: 992px) {
+            .product-card-large {
+                flex-direction: column;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+             .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="nav-logo">RAZER</div>
+                <div class="nav-links">
+                    <a href="shop.php" >Store</a>
+                    <a href="Razer_PC.html">PC</a>
+                    <a href="console.html" class="active">Console</a>
+                    <a href="mobile.html">Mobile</a>
+                </div>
+                <div class="nav-icons">
+                    <a href="cart.php" class="cart-icon-link">
+                         <i class="fas fa-shopping-cart cart-icon"></i>
+                    </a>
+                    <i class="fas fa-user user-icon"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+   
+    <main>
+        <div class="container">
+            
+            <section class="hero">
+                <h1>RAZER GAMING GEAR</h1>
+                <p>FOR GAMERS. BY GAMERS.&trade;</p>
+            </section>
+
+            <section class="product-grid">
+
+                <div class="product-card-large">
+                    <div class="product-image-container">
+                        <img src="assets/handheld1.jpg" alt="" class="product-image-large">
+                    </div>
+                    <div class="product-details-container">
+                        <div class="product-header">
+                            <div class="product-title-group">
+                                <p class="brand">Razer</p>
+                                <p class="title">AMD ADVANCED GAMING PC</p>
+                            </div>
+                            <div class="price-group">
+                                <span class="current-price">$549<sup>99</sup></span>
+                                <p class="finance-option">Starting at $34/mo</p>
+                            </div>
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item"><p class="spec-label">Processor</p><p class="spec-value">AMD Ryzen™ 5 5600G 3.9GHz Hexa-Core</p></div>
+                            <div class="spec-item"><p class="spec-label">GPU</p><p class="spec-value">AMD Radeon™ RX Vega 7 Onboard</p></div>
+                            <div class="spec-item"><p class="spec-label">Ram</p><p class="spec-value">16GB  DDR4-3200 ADATA XPG GAMMIX D10</p></div>
+                            <div class="spec-item"><p class="spec-label">Storage</p><p class="spec-value">1TB 3.5in Western Digital WD Blue PC HDD</p></div>
+                        </div>
+                        <div class="product-footer">
+                             <div class="footer-links"><a href="#">SEE ALL SPECS</a></div>
+                             <div class="footer-buttons">
+                                <form action="cart.php" method="post" style="display: contents;">
+                                    <input type="hidden" name="productId" value="P001">
+                                    <input type="hidden" name="productName" value="Ryzen 5 5600 + Radeon RX Vega 7">
+                                    <input type="hidden" name="price" value="1149.99">
+                                    <button type="submit" class="btn btn-dark">Add to Cart</button>
+                                </form>
+                                <button type="button" class="btn btn-red">Customize</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card-large">
+                    <div class="product-image-container">
+                        <img src="assets/handheld2.jpg" alt="" class="product-image-large">
+                    </div>
+                    <div class="product-details-container">
+                        <div class="product-header">
+                            <div class="product-title-group">
+                                <p class="brand">Razer</p>
+                                <p class="title">INTEL ULTRA GAMING PC</p>
+                            </div>
+                             <div class="price-group">
+                                <span class="current-price">$349<sup>99</sup></span>
+                                <p class="finance-option">Starting at $18/mo</p>
+                            </div>
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item"><p class="spec-label">Processor</p><p class="spec-value">Intel® Core™ i5-14600KF 3.5GHz</p></div>
+                            <div class="spec-item"><p class="spec-label">GPU</p><p class="spec-value">NVIDIA® GeForce® RTX™ 4060 8GB GDDR6</p></div>
+                            <div class="spec-item"><p class="spec-label">Ram</p><p class="spec-value">32GB  DDR5-5600 Patriot Venom RGB</p></div>
+                            <div class="spec-item"><p class="spec-label">Storage</p><p class="spec-value">1TB ADATA LEGEND 700 GOLD M.2 NVMe SSD</p></div>
+                        </div>
+                         <div class="product-footer">
+                             <div class="footer-links"><a href="#">SEE ALL SPECS</a></div>
+                             <div class="footer-buttons">
+                                <form action="cart.php" method="post" style="display: contents;">
+                                    <input type="hidden" name="productId" value="P002">
+                                    <input type="hidden" name="productName" value="Intel® Core™ i5-14600KF + NVIDIA® GeForce® RTX™ 4060">
+                                    <input type="hidden" name="price" value="2189.99">
+                                    <button type="submit" class="btn btn-dark">Add to Cart</button>
+                                </form>
+                                <button type="button" class="btn btn-red">Customize</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="product-card-large">
+                    <div class="product-image-container">
+                        <img src="assets/handheld3.jpg" alt="" class="product-image-large">
+                    </div>
+                    <div class="product-details-container">
+                        <div class="product-header">
+                            <div class="product-title-group">
+                                <p class="brand">Razer</p>
+                                <p class="title">Z690 ULTRA GAMING PC</p>
+                            </div>
+                            <div class="price-group">
+                                <span class="current-price">$499<sup>99</sup></span>
+                                <p class="finance-option">Starting at $239/mo</p>
+                            </div>
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item"><p class="spec-label">Processor</p><p class="spec-value">Intel® Core™ i9-14900KF 3.20GHz</p></div>
+                            <div class="spec-item"><p class="spec-label">GPU</p><p class="spec-value">NVIDIA® GeForce® RTX™ 5070 Ti 16GB GDDR7</p></div>
+                            <div class="spec-item"><p class="spec-label">Ram</p><p class="spec-value">32GB  DDR5-5600 Patriot Venom RGB</p></div>
+                            <div class="spec-item"><p class="spec-label">Storage</p><p class="spec-value">2TB Patriot P300 M.2 NVMe SSD</p></div>
+                        </div>
+                        <div class="product-footer">
+                             <div class="footer-links"><a href="#">SEE ALL SPECS</a></div>
+                             <div class="footer-buttons">
+                                <form action="cart.php" method="post" style="display: contents;">
+                                    <input type="hidden" name="productId" value="P003">
+                                    <input type="hidden" name="productName" value="Razer BlackShark V2">
+                                    <input type="hidden" name="price" value="99.99">
+                                    <button type="submit" class="btn btn-dark">Add to Cart</button>
+                                </form>
+                                <button type="button" class="btn btn-red">Customize</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+    
+
+</body>
+</html>
